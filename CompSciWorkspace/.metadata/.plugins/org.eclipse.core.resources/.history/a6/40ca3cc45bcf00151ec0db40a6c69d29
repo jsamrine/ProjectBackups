@@ -1,0 +1,39 @@
+
+public class SearchingAlgorithms {
+
+	public static void main(String[] args) {
+		
+	}
+	
+	public static boolean linearSearchIterative(int[] a, int value)
+	{
+		for(int i = 0; i <a.length; i++)
+		{
+			if(a[i] == value)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean linearSearchRecursive(int[] a, int value, int index)
+	{
+		if(a[index] == value)
+		{
+			return true;
+		}
+		else {
+			index++;
+			if(index>= a.length)
+			{
+				return false;
+			}
+			else 
+			{
+				return linearSearchRecursive(a, value, index);
+			}
+		}
+	}
+
+}

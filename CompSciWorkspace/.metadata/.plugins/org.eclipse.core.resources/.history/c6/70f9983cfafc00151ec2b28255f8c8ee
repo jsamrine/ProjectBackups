@@ -1,0 +1,192 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Graph {
+	private class Vertex {
+		String name;
+		ArrayList<Edge> neighbors;
+
+		public Vertex(String aName) {
+			this.name = aName;
+			this.neighbors = new ArrayList<Edge>();
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+	}
+
+	private class Edge {
+		Vertex nextVert;
+		double weight;
+
+		public Edge(Vertex aV1, double aWeight) {
+			nextVert = aV1;
+			weight = aWeight;
+		}
+
+		public Vertex getNextVert() {
+			return nextVert;
+		}
+
+		public void setNextVert(Vertex nextVert) {
+			this.nextVert = nextVert;
+		}
+	}
+
+	private Vertex origin;
+	private ArrayList<Vertex> vertices;
+	private ArrayList<Vertex> markedVerts;
+	private ArrayList<Vertex> visitedVerts;
+	private ArrayList<Edge> traversed;
+	private int edgeCount;
+
+	public Graph() {
+		origin = null;
+		vertices = new ArrayList<Vertex>();
+		markedVerts = new ArrayList<Vertex>();
+		visitedVerts = new ArrayList<Vertex>();
+		traversed = new ArrayList<Edge>();
+		edgeCount = 0;
+	}
+
+	// vertexes have edges linking them to other vertexes
+	public void addVertex(String aName) {
+		// checks graph to see if a duplicate vertex already exists
+		if (!isContained(aName)) {
+			Vertex v = new Vertex(aName);
+			vertices.add(v);
+			if (origin == null) {
+				origin = v;
+			}
+		}
+
+	}
+
+	public boolean isContained(String aName) {
+		for (Vertex vert : vertices) {
+			// checks for a matching name, returning true if a match is found
+			if (vert.name.equals(aName)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void addEdge(String fromVert, String toVert, double weight) {
+		// two local variables find vertexes in the graph with matching names
+		Vertex v1 = getVertex(fromVert);
+		Vertex v2 = getVertex(toVert);
+		// checks to make sure vertexes are initialized
+		if (v1 == null || v2 == null) {
+			return;
+		}
+		v1.neighbors.add(new Edge(v2, weight));
+		v2.neighbors.add(new Edge(v1, weight));
+		edgeCount++;
+	}
+
+	public Vertex getVertex(String aName) {
+		// similar to the isContained method, this searches for each vertex in
+		// the arraylist
+		// with a name that matches aName, returning a vertex
+		for (Vertex vert : vertices) {
+			if (vert.name.equals(aName)) {
+				return vert;
+			}
+		}
+		return null;
+	}
+
+	public void printDFS() {
+		// deletes all indexes in the markedVerts array
+		markedVerts.clear();
+		// calls helper method
+		printDFS(origin);
+	}
+
+	public void printDFS(Vertex aVert) {
+		// if current vertex has been visited/marked, method returns
+		if (markedVerts.contains(aVert)) {
+			return;
+		}
+		// prints out current vertex's name and adds it to the list of marked
+		// vertexes
+		System.out.println(aVert.name);
+		markedVerts.add(aVert);
+		// printdfs is called for each edge the vertex has
+		for (Edge edge : aVert.neighbors) {
+			printDFS(edge.nextVert);
+		}
+	}
+
+	public void traverse(String v1, String v2) {
+
+		Vertex V1 = getVertex(v1);
+		Vertex V2 = getVertex(v2);
+		if (V1 == null || V2 == null) {
+			return;
+		}
+		Edge E = getEdge(V1, V2);
+		if (E != null) {
+			// System.out.println("Added");
+			traversed.add(E);
+		}
+
+	}
+
+	public Edge getEdge(Vertex from, Vertex to) {
+		for (Edge edge : from.neighbors) {
+			if (edge.nextVert == to) {
+				return edge;
+			}
+		}
+		return null;
+	}
+
+	public void strollAroundKoningsburg() {
+		for (Vertex v : vertices) {
+			traversed.clear();
+			markedVerts.clear();
+			visitedVerts.clear();
+			System.out.println("Starting from: " + v.name);
+
+			startFrom(v);
+			System.out.println(edgeCount);
+			System.out.println(traversed.size());
+			if(edgeCount == traversed.size())
+			{
+				System.out.println("All bridges travelled");
+			}
+			System.out.println();
+		}
+	}
+
+	public void startFrom(Vertex vert) {
+		//System.out.println(vert.name);
+		Queue<Edge> q = new LinkedList<Edge>();
+		for (Edge edge : vert.neighbors) {
+			if (!traversed.contains(edge)) {
+				//System.out.println("Backtracking to " + vert.name);
+				//traversed.remove(traversed.size()-1);
+				traversed.add(edge);
+				q.add(edge);
+				return;
+			}
+		}
+		Edge e;
+		while(!q.isEmpty())
+		{
+			e = q.remove();
+			System.out.println(e.nextVert.name);
+			startFrom(e.nextVert);
+		}
+
+	}
+
+}

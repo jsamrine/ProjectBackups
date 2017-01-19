@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "Descend into 'testdirectory' directory"
+cd testdirectory
+#
+for item in *
+do
+  echo " "
+  echo "EXECUTING" $item
+  cd $item
+  Aprog ../../xintree1.txt zout1.txt zlog1.txt
+#  Aprog ../../xintree4.txt zoutfile4.txt zlogfile4.txt
+  cd ..
+echo "EXECUTION COMPLETE"
+done
+echo "Return from 'testdirectory' directory"
+cd ..
+echo " "

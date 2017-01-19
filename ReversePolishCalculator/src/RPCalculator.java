@@ -1,0 +1,108 @@
+//Julian Amrine
+import java.util.Scanner;
+
+public class RPCalculator {
+
+	public static void main(String[] args) {
+		boolean running = true;
+		Scanner input = new Scanner(System.in);
+		String userIn;
+		// boolean for formatting checks
+
+		String[] values;
+		int x, y, ans;
+		// loop allows user to perform calculations until they wish to quit.
+		while (running == true) {
+			boolean format = true;
+			String notice = "Incorrectly formatted";
+			// new List is created after every iteration of the loop(Is this
+			// inefficient?)
+			GenStack<Integer> calculations = new GenStack();
+			System.out.println("Enter a reverse polish expressions or \"quit\" to quit.");
+			userIn = input.nextLine();
+			// checks first for exit condition
+			if (userIn.contains("quit")) {
+				running = false;
+				System.out.println("Good bye!");
+				System.exit(0);
+			} else {
+				// input is trimmed and split by whitespace into the String
+				// array values
+				userIn = userIn.trim();
+				values = userIn.split(" ");
+				// for loop will perform one of five functions for each value in
+				// the array
+				for (int i = 0; i < values.length; i++) {
+					// case for multiplication
+					if (values[i].equals("*")) {
+						//checks if more than one value has been pushed to the stack
+						if (calculations.length() >= 2) {
+							// pops first value from the stack
+							y = calculations.pop();
+							// pops next value from the stack
+							x = calculations.pop();
+							ans = x * y;
+							// answer is pushed to stack
+							calculations.push(ans);
+						}
+						// case for division
+					} else if (values[i].equals("/")) {
+						if (calculations.length() >= 2) {
+							y = calculations.pop();
+							x = calculations.pop();
+							// checks for division by 0, loop breaks if dividing
+							// by
+							// 0
+							if (y == 0) {
+								notice = "Error: Divison by 0!";
+								break;
+							}
+							ans = x / y;
+							calculations.push(ans);
+						}
+						// case for addition
+					} else if (values[i].equals("+")) {
+						if (calculations.length() >= 2) {
+							y = calculations.pop();
+							x = calculations.pop();
+							ans = x + y;
+							calculations.push(ans);
+						}
+						// case for subtraction
+					} else if (values[i].equals("-")) {
+						if (calculations.length() >= 2) {
+							y = calculations.pop();
+							x = calculations.pop();
+							ans = x - y;
+							calculations.push(ans);
+						}
+					} else {
+						// if none of the array values are signs then the value
+						// is parsed to an integer in a try catch block
+						try {
+							calculations.push(Integer.parseInt(values[i]));
+							// if the value cannot be converted it is an
+							// alphabetical character and throws the exception
+							// Note that NumberFormatException is an exception
+							// native to java and was not created by myself.
+						} catch (NumberFormatException e) {
+							notice = "Invalid input. Calculation aborted.";
+							format = false;
+							break;
+						}
+					}
+				}
+				// format is only changed from true if number format exception
+				// is thrown
+				// checks if there is only one value left on the stack. If so,
+				// the value is popped and printed to the console
+				if (calculations.length() == 1 && format == true) {
+					System.out.println("Result: " + calculations.pop());
+				} else {
+					// Prints out reason for error
+					System.out.println(notice);
+				}
+			}
+		}
+	}
+}

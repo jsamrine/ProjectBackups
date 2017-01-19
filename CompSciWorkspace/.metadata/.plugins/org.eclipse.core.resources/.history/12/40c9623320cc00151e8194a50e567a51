@@ -1,0 +1,90 @@
+import java.util.Scanner;
+
+public class RPCalculator {
+
+	public static void main(String[] args) {
+		boolean running = true;
+		Scanner input = new Scanner(System.in);
+		String userIn;
+		String[] values;
+		int x, y, ans;
+		
+		while (running == true) {
+			GenStack<Integer> calculations = new GenStack();
+			System.out.println("Enter a reverse polish expressions or \"quit\" to quit.");
+			userIn = input.nextLine();
+			if (userIn.contains("quit")) {
+				running = false;
+				System.out.println("Good bye!");
+				System.exit(0);
+			} else {
+				//input
+				userIn = userIn.trim();
+				values = userIn.split(" ");
+				for (int i = 0; i < values.length; i++) {
+					if (values[i].equals("*")) {
+						if (calculations.length() >= 2) {
+							y = calculations.pop();
+							x = calculations.pop();
+							ans = x * y;
+							calculations.push(ans);
+						} else {
+							System.out.println("Incorrectly formatted");
+						}
+					} else if (values[i].equals("/")) {
+						if (calculations.length() >= 2) {
+						y = calculations.pop();
+						x = calculations.pop();
+						if (y == 0) {
+							System.out.println("Divison by 0!");
+							break;
+						}
+						ans = x / y;
+						calculations.push(ans);
+						} else {
+							System.out.println("Incorrectly formatted");
+							break;
+						}
+					} else if (values[i].equals("+")) {
+						if (calculations.length() >= 2) {
+						y = calculations.pop();
+						x = calculations.pop();
+						//System.out.println(x + " " + y);
+						//System.out.println("addition");
+						ans = x + y;
+						calculations.push(ans);
+						} else {
+							System.out.println("Incorrectly formatted");
+							break;
+						}
+					} else if (values[i].equals("-")) {
+						if (calculations.length() >= 2) {
+						y = calculations.pop();
+						x = calculations.pop();
+						ans = x - y;
+						calculations.push(ans);
+						} else {
+							System.out.println("Incorrectly formatted");
+							break;
+						}
+					} else {
+						try {
+							calculations.push(Integer.parseInt(values[i]));
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid input. Calculation aborted.");
+							break;
+						}
+					}
+				}
+				if(calculations.length() == 1)
+				{
+					System.out.println("Result: " + calculations.pop());
+				}
+				else
+				{
+					System.out.println("Incorrect Format");
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,57 @@
+public class GenStack <T>{
+	private class Node{
+		private T data;
+		private Node link;
+		//default constructor for Node
+		public Node() {
+			this.data = null;
+			this.link = null;
+		}
+	}
+	private Node head, previous, current;
+	
+	//creates an empty list
+	public GenStack(){
+		this.head = null;
+		this.current = null;
+	}
+	
+	public void push(T aData)
+	{
+		Node newNode = new Node();
+		newNode.data = aData;
+		if(head == null)
+		{
+			head = previous = newNode;
+			return;
+		}
+		head = newNode;
+		head.link = previous;
+		
+	}
+	
+	public T pop()
+	{
+		T result = null;
+		if(head!=null){
+			result = head.data;
+			head = head.link;
+			return result;			
+		}
+		else
+		{
+			return null;
+		}
+	}
+	
+	public void printStack()
+	{
+		current = head;
+		while(current!=null)
+		{
+			System.out.println(head.data);
+			current = current.link;
+			
+		}
+	}
+}

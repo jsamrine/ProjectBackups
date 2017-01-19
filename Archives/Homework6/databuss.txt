@@ -1,0 +1,6 @@
+butt	1994	**	A J	123	
+foobie	1992	****	E Z	12346	
+moobie	1995	*	X Y	12	
+roobie	1993	**	J L	12345	
+rad	1990	*	Boojie Fats	1234	
+toobie	1990	*****	F U	12347	

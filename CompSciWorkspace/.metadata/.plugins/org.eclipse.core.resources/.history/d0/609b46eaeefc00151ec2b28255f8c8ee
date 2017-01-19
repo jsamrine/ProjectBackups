@@ -1,0 +1,40 @@
+
+public class Koenigsburg {
+
+	public static void main(String[] args) {
+		Graph g = new Graph(7);
+		g.addVertex("V1");
+		g.addVertex("V2");
+		g.addVertex("V3");
+		g.addVertex("V4");
+		//g.addVertex("V5");
+		g.addEdge("V1", "V2", 1);
+		g.addEdge("V1", "V2", 2);
+		g.addEdge("V1", "V4", 1);
+		g.addEdge("V2", "V3", 3);
+		g.addEdge("V2", "V3", 4);
+		g.addEdge("V2", "V4", 5);
+		
+		g.addEdge("V3", "V4", 1);
+		System.out.println("Taking a walk");
+		g.strollAroundKoningsburg();
+		/*
+		 * g.addEdge(0, 3, 1); g.addEdge(0, 4, 1); //m.addEdge(0, 5, 1);
+		 * 
+		 * g.addEdge(1, 2, 1); g.addEdge(1, 3, 1); g.addEdge(1, 4, 1);
+		 * 
+		 * g.addEdge(2, 3, 1); g.addEdge(2, 4, 1);
+		 * 
+		 * g.addEdge(3, 4, 1);
+		 * 
+		 * g.addEdge(4, 5, 1); g.addEdge(4, 6, 1);
+		 * 
+		 * g.addEdge(5, 6, 1);
+		 * 
+		 * //g.printMatrix();
+		 * 
+		 * //g.printBFSAll(); //g.printDFSAll();
+		 */
+	}
+
+}

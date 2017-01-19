@@ -1,0 +1,33 @@
+import java.util.*;
+import java.io.*;
+
+public class MovieDriver extends MovieDB{
+
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Welcome your personal movie database. \nPress 1 to create a list, and 2 to view your list, and 0 to exit the program");
+		
+		String userInput = input.nextLine();
+		
+		MovieDB MovieList = new MovieDB();
+		if(userInput.equals(1))
+		{
+			MovieList.createList();
+			System.out.println("Press 1 to edit your list, or 0 to exit");
+		}
+		else if(userInput.equals(2))
+		{
+			MovieList.editList();
+			
+		}
+		else if(userInput.equals(0))
+		{
+			System.exit(0);
+		}
+
+	}
+	
+	
+
+}

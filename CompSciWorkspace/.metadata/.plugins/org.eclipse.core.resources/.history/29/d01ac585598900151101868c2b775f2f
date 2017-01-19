@@ -1,0 +1,227 @@
+import java.util.Scanner;
+import java.io.*;
+public class MovieDB {
+	private static final int DATABASE_SIZE = 10000;
+	private static final String DELIM = "\n";
+	private Scanner input = new Scanner(System.in);
+	private Movie[] Movies = new Movie[DATABASE_SIZE];
+	private String name, rating, director, userInput;
+	private int year, gross;
+	private boolean swap; 
+
+	public MovieDB() 
+	{
+		createList();
+	}
+
+	public void createList() 
+	{
+		System.out.println("Please enter a name for your database");
+		String DBName = input.nextLine();
+		
+		for(int i = 0; i < DATABASE_SIZE; i++)
+		{
+			addMovie(i);
+			System.out.println("Would you like to add another movie?");
+			userInput=input.nextLine();
+			if(userInput.contains("no")||userInput.contains("n"))
+			{
+				break;
+			}
+		}
+		printToFile(DBName);
+	}
+
+	public void editList() 
+	{
+		System.out.println("Enter the name of the desired database");
+		String DBName = input.nextLine();
+		readFromFile(DBName);
+		System.out.println("Enter 1 to add a movie, 2 to delete a movie, 3 to sort, or 4 to exit");	
+	}
+
+	// methods
+	// equals method
+	
+	public void addMovie(int i)
+	{
+		System.out.println("Enter the name of the movie");
+		name = input.nextLine();
+		System.out.println("Enter the year the movie was released ");
+		year = input.nextInt();
+		System.out.println("Enter a rating for the movie out of 5 stars");
+		input.nextLine();
+		rating = input.nextLine();
+		System.out.println("Enter the name of the movie's director");
+		director = input.nextLine();
+		System.out.println("Enter the total box office gross for the movie");
+		gross=input.nextInt();
+		input.nextLine();
+		for(int j=i; j<Movies.length;j++)
+		{
+			if(Movies[j]==null)
+			{
+				Movies[j] = new Movie(name, year, rating, director, gross);
+				break;
+			}
+		}
+	}
+	
+	public void reMovie(String aTitle) 
+	{
+		for(int i = 0; i < Movies.length; i++)
+		{
+			if(Movies[i].getName().equals(aTitle))
+			{
+				Movies[i].setName(null);
+				Movies[i].setYear(0);
+				Movies[i].setRating(null);
+				Movies[i].setDirector(null);
+				Movies[i].setGross(0);
+			}
+		}
+	}
+
+	public void sortByTitle() 
+	{
+		while(swap == true)
+		{
+			swap = false;
+			for(int i = 0; i < Movies.length; i++)
+			{
+				if(Movies[i].getName().charAt(0)>Movies[i+1].getName().charAt(0))
+				{
+					Movie temp = Movies[i];
+					Movies[i] = Movies[i+1] ;
+					Movies[i+1] = temp;
+					swap = true;
+				}
+			}
+		}
+	}
+
+	public void sortByRating() 
+	{
+		while(swap == true)
+		{
+			swap = false;
+			for(int i = 0; i < Movies.length; i++)
+			{
+				if(Movies[i].getRating().length()>Movies[i+1].getRating().length())
+				{
+					Movie temp = Movies[i];
+					Movies[i] = Movies[i+1] ;
+					Movies[i+1] = temp;
+					swap = true;
+				}
+			}
+		}
+	}
+
+	public void sortByGross() 
+	{
+		while(swap == true)
+		{
+			swap = false;
+			for(int i = 0; i < Movies.length; i++)
+			{
+				if(Movies[i].getGross()>Movies[i+1].getGross())
+				{
+					Movie temp = Movies[i];
+					Movies[i] = Movies[i+1] ;
+					Movies[i+1] = temp;
+					swap = true;
+				}
+			}
+		}
+	}
+
+	public void sortByDirector() 
+	{
+		String[] lastNameIndex1,lastNameIndex2;
+		while(swap == true)
+		{
+			swap = false;
+			for(int i = 0; i < Movies.length; i++)
+			{
+				lastNameIndex1=Movies[i].getDirector().split(" "); //more efficient way?
+				lastNameIndex2=Movies[i+1].getDirector().split(" ");
+				if(lastNameIndex1[1].charAt(0)> lastNameIndex2[2].charAt(0))
+				{
+					Movie temp = Movies[i];
+					Movies[i] = Movies[i+1] ;
+					Movies[i+1] = temp;
+					swap = true;
+				}
+			}
+		}
+	}
+	
+	public void sortByYear()
+	{
+		while(swap == true)
+		{
+			swap = false;
+			for(int i = 0; i < Movies.length; i++)
+			{
+				if(Movies[i].getYear()>Movies[i+1].getYear())
+				{
+					Movie temp = Movies[i];
+					Movies[i] = Movies[i+1] ;
+					Movies[i+1] = temp;
+					swap = true;
+				}
+			}
+		}
+	}
+
+	public void printToFile(String aFileName) 
+	{
+		try
+		{
+			PrintWriter fileWriter = new PrintWriter(new FileOutputStream(aFileName));
+			for(Movie movie: Movies)
+			{
+				if(movie == null)
+				{
+					break;
+				}
+				fileWriter.println("Title: " + movie.getName() + DELIM +
+									"Year: " + movie.getYear() + DELIM +
+									"Rating: " + movie.getRating() + DELIM +
+									"Director: " + movie.getDirector() +DELIM +
+									"Box Office Gross: " + movie.getGross() + DELIM
+									+"..."
+									);
+			
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception" +e.getMessage());
+		}
+	}
+
+	public void readFromFile(String aFileName) 
+	{
+		try
+		{
+			Movies = new Movie[DATABASE_SIZE];
+			Scanner fileScanner = new Scanner(new File(aFileName));
+			int movieCount = 0;
+			while(fileScanner.hasNextLine())
+			{
+				String fileLine = fileScanner.nextLine();
+				String[] splitLines = fileLine.split(DELIM);
+				//TODO: Find a way to add info to a list of movies
+				Movie aMovie = new Movie(name, year, rating, director, gross);
+			}
+			fileScanner.close();
+			
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+}

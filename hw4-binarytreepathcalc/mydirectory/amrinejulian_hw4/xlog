@@ -1,0 +1,174 @@
+Beginning execution
+infile  'xin1.txt'
+outfile 'xout'
+logfile 'xlog'
+TRAVERSAL: node count 31
+TRAVERSAL: lineread  0  -99  -99    0
+TRAVERSAL: lineread  1    2    3   97
+TRAVERSAL: lineread  2    4    5   69
+TRAVERSAL: lineread  3    6    7   34
+TRAVERSAL: lineread  4    8    9   80
+TRAVERSAL: lineread  5   10   11   88
+TRAVERSAL: lineread  6   12   13   66
+TRAVERSAL: lineread  7   14   15   34
+TRAVERSAL: lineread  8   16   17   42
+TRAVERSAL: lineread  9   18   19   76
+TRAVERSAL: lineread 10   20   21   40
+TRAVERSAL: lineread 11   22   23    2
+TRAVERSAL: lineread 12   24   25   40
+TRAVERSAL: lineread 13   26   27   49
+TRAVERSAL: lineread 14   28   29   14
+TRAVERSAL: lineread 15   30   31   78
+TRAVERSAL: lineread 16  -99  -99   99
+TRAVERSAL: lineread 17  -99  -99   96
+TRAVERSAL: lineread 18  -99  -99    3
+TRAVERSAL: lineread 19  -99  -99   86
+TRAVERSAL: lineread 20  -99  -99   56
+TRAVERSAL: lineread 21  -99  -99   83
+TRAVERSAL: lineread 22  -99  -99   57
+TRAVERSAL: lineread 23  -99  -99   18
+TRAVERSAL: lineread 24  -99  -99   26
+TRAVERSAL: lineread 25  -99  -99    4
+TRAVERSAL: lineread 26  -99  -99   83
+TRAVERSAL: lineread 27  -99  -99   26
+TRAVERSAL: lineread 28  -99  -99   61
+TRAVERSAL: lineread 29  -99  -99   55
+TRAVERSAL: lineread 30  -99  -99   86
+TRAVERSAL: lineread 31  -99  -99    3
+TRAVERSAL: enter DoTraversal
+TRAVERSAL: 
+DESCEND FROM NODE  1 WITH MINCOST, CURRCOST  2147483647 97 (   1:    2    3   97  97)
+  TRAVERSAL: enter DescendFrom(   1:    2    3   97  97)
+    TRAVERSAL: DESCEND FROM NODE  2 WITH MINCOST, CURRCOST  2147483647 166 (   2:    4    5   69 166)
+    TRAVERSAL: enter DescendFrom(   2:    4    5   69 166)
+      TRAVERSAL: DESCEND FROM NODE  4 WITH MINCOST, CURRCOST  2147483647 246 (   4:    8    9   80 246)
+      TRAVERSAL: enter DescendFrom(   4:    8    9   80 246)
+        TRAVERSAL: DESCEND FROM NODE  8 WITH MINCOST, CURRCOST  2147483647 288 (   8:   16   17   42 288)
+        TRAVERSAL: enter DescendFrom(   8:   16   17   42 288)
+          TRAVERSAL: DESCEND FROM NODE  16 WITH MINCOST, CURRCOST  2147483647 387 (  16:   XX   XX   99 387)
+          TRAVERSAL: enter DescendFrom(  16:   XX   XX   99 387)
+          TRAVERSAL: LEAF (  16:   XX   XX   99 387)
+          TRAVERSAL: SET NEW MIN COST 16 WITH MINCOST, CURRCOST  387 387 (  16:   XX   XX   99 387)
+          TRAVERSAL: RETURNED FROM NODE 16 WITH MINCOST, CURRCOST  387 387 (  16:   XX   XX   99 387)
+            TRAVERSAL: DESCEND FROM NODE  17 WITH MINCOST, CURRCOST  387 384 (  17:   XX   XX   96 384)
+            TRAVERSAL: enter DescendFrom(  17:   XX   XX   96 384)
+            TRAVERSAL: LEAF (  17:   XX   XX   96 384)
+            TRAVERSAL: SET NEW MIN COST 17 WITH MINCOST, CURRCOST  384 384 (  17:   XX   XX   96 384)
+            TRAVERSAL: RETURNED FROM NODE 17 WITH MINCOST, CURRCOST  384 384 (  17:   XX   XX   96 384)
+            TRAVERSAL: leave DescendFrom
+        TRAVERSAL: RETURNED FROM NODE 8 WITH MINCOST, CURRCOST  384 288 (   8:   16   17   42 288)
+          TRAVERSAL: DESCEND FROM NODE  9 WITH MINCOST, CURRCOST  384 322 (   9:   18   19   76 322)
+          TRAVERSAL: enter DescendFrom(   9:   18   19   76 322)
+            TRAVERSAL: DESCEND FROM NODE  18 WITH MINCOST, CURRCOST  384 325 (  18:   XX   XX    3 325)
+            TRAVERSAL: enter DescendFrom(  18:   XX   XX    3 325)
+            TRAVERSAL: LEAF (  18:   XX   XX    3 325)
+            TRAVERSAL: SET NEW MIN COST 18 WITH MINCOST, CURRCOST  325 325 (  18:   XX   XX    3 325)
+            TRAVERSAL: RETURNED FROM NODE 18 WITH MINCOST, CURRCOST  325 325 (  18:   XX   XX    3 325)
+              TRAVERSAL: DESCEND FROM NODE  19 WITH MINCOST, CURRCOST  325 408 (  19:   XX   XX   86 408)
+              TRAVERSAL: enter DescendFrom(  19:   XX   XX   86 408)
+              TRAVERSAL: LEAF (  19:   XX   XX   86 408)
+              TRAVERSAL: RETURNED FROM NODE 19 WITH MINCOST, CURRCOST  325 408 (  19:   XX   XX   86 408)
+              TRAVERSAL: leave DescendFrom
+          TRAVERSAL: RETURNED FROM NODE 9 WITH MINCOST, CURRCOST  325 322 (   9:   18   19   76 322)
+          TRAVERSAL: leave DescendFrom
+      TRAVERSAL: RETURNED FROM NODE 4 WITH MINCOST, CURRCOST  325 246 (   4:    8    9   80 246)
+        TRAVERSAL: DESCEND FROM NODE  5 WITH MINCOST, CURRCOST  325 254 (   5:   10   11   88 254)
+        TRAVERSAL: enter DescendFrom(   5:   10   11   88 254)
+          TRAVERSAL: DESCEND FROM NODE  10 WITH MINCOST, CURRCOST  325 294 (  10:   20   21   40 294)
+          TRAVERSAL: enter DescendFrom(  10:   20   21   40 294)
+            TRAVERSAL: DESCEND FROM NODE  20 WITH MINCOST, CURRCOST  325 350 (  20:   XX   XX   56 350)
+            TRAVERSAL: enter DescendFrom(  20:   XX   XX   56 350)
+            TRAVERSAL: LEAF (  20:   XX   XX   56 350)
+            TRAVERSAL: RETURNED FROM NODE 20 WITH MINCOST, CURRCOST  325 350 (  20:   XX   XX   56 350)
+              TRAVERSAL: DESCEND FROM NODE  21 WITH MINCOST, CURRCOST  325 377 (  21:   XX   XX   83 377)
+              TRAVERSAL: enter DescendFrom(  21:   XX   XX   83 377)
+              TRAVERSAL: LEAF (  21:   XX   XX   83 377)
+              TRAVERSAL: RETURNED FROM NODE 21 WITH MINCOST, CURRCOST  325 377 (  21:   XX   XX   83 377)
+              TRAVERSAL: leave DescendFrom
+          TRAVERSAL: RETURNED FROM NODE 10 WITH MINCOST, CURRCOST  325 294 (  10:   20   21   40 294)
+            TRAVERSAL: DESCEND FROM NODE  11 WITH MINCOST, CURRCOST  325 256 (  11:   22   23    2 256)
+            TRAVERSAL: enter DescendFrom(  11:   22   23    2 256)
+              TRAVERSAL: DESCEND FROM NODE  22 WITH MINCOST, CURRCOST  325 313 (  22:   XX   XX   57 313)
+              TRAVERSAL: enter DescendFrom(  22:   XX   XX   57 313)
+              TRAVERSAL: LEAF (  22:   XX   XX   57 313)
+              TRAVERSAL: SET NEW MIN COST 22 WITH MINCOST, CURRCOST  313 313 (  22:   XX   XX   57 313)
+              TRAVERSAL: RETURNED FROM NODE 22 WITH MINCOST, CURRCOST  313 313 (  22:   XX   XX   57 313)
+                TRAVERSAL: DESCEND FROM NODE  23 WITH MINCOST, CURRCOST  313 274 (  23:   XX   XX   18 274)
+                TRAVERSAL: enter DescendFrom(  23:   XX   XX   18 274)
+                TRAVERSAL: LEAF (  23:   XX   XX   18 274)
+                TRAVERSAL: SET NEW MIN COST 23 WITH MINCOST, CURRCOST  274 274 (  23:   XX   XX   18 274)
+                TRAVERSAL: RETURNED FROM NODE 23 WITH MINCOST, CURRCOST  274 274 (  23:   XX   XX   18 274)
+                TRAVERSAL: leave DescendFrom
+            TRAVERSAL: RETURNED FROM NODE 11 WITH MINCOST, CURRCOST  274 256 (  11:   22   23    2 256)
+            TRAVERSAL: leave DescendFrom
+        TRAVERSAL: RETURNED FROM NODE 5 WITH MINCOST, CURRCOST  274 254 (   5:   10   11   88 254)
+        TRAVERSAL: leave DescendFrom
+    TRAVERSAL: RETURNED FROM NODE 2 WITH MINCOST, CURRCOST  274 166 (   2:    4    5   69 166)
+      TRAVERSAL: DESCEND FROM NODE  3 WITH MINCOST, CURRCOST  274 131 (   3:    6    7   34 131)
+      TRAVERSAL: enter DescendFrom(   3:    6    7   34 131)
+        TRAVERSAL: DESCEND FROM NODE  6 WITH MINCOST, CURRCOST  274 197 (   6:   12   13   66 197)
+        TRAVERSAL: enter DescendFrom(   6:   12   13   66 197)
+          TRAVERSAL: DESCEND FROM NODE  12 WITH MINCOST, CURRCOST  274 237 (  12:   24   25   40 237)
+          TRAVERSAL: enter DescendFrom(  12:   24   25   40 237)
+            TRAVERSAL: DESCEND FROM NODE  24 WITH MINCOST, CURRCOST  274 263 (  24:   XX   XX   26 263)
+            TRAVERSAL: enter DescendFrom(  24:   XX   XX   26 263)
+            TRAVERSAL: LEAF (  24:   XX   XX   26 263)
+            TRAVERSAL: SET NEW MIN COST 24 WITH MINCOST, CURRCOST  263 263 (  24:   XX   XX   26 263)
+            TRAVERSAL: RETURNED FROM NODE 24 WITH MINCOST, CURRCOST  263 263 (  24:   XX   XX   26 263)
+              TRAVERSAL: DESCEND FROM NODE  25 WITH MINCOST, CURRCOST  263 241 (  25:   XX   XX    4 241)
+              TRAVERSAL: enter DescendFrom(  25:   XX   XX    4 241)
+              TRAVERSAL: LEAF (  25:   XX   XX    4 241)
+              TRAVERSAL: SET NEW MIN COST 25 WITH MINCOST, CURRCOST  241 241 (  25:   XX   XX    4 241)
+              TRAVERSAL: RETURNED FROM NODE 25 WITH MINCOST, CURRCOST  241 241 (  25:   XX   XX    4 241)
+              TRAVERSAL: leave DescendFrom
+          TRAVERSAL: RETURNED FROM NODE 12 WITH MINCOST, CURRCOST  241 237 (  12:   24   25   40 237)
+            TRAVERSAL: DESCEND FROM NODE  13 WITH MINCOST, CURRCOST  241 246 (  13:   26   27   49 246)
+            TRAVERSAL: enter DescendFrom(  13:   26   27   49 246)
+              TRAVERSAL: DESCEND FROM NODE  26 WITH MINCOST, CURRCOST  241 329 (  26:   XX   XX   83 329)
+              TRAVERSAL: enter DescendFrom(  26:   XX   XX   83 329)
+              TRAVERSAL: LEAF (  26:   XX   XX   83 329)
+              TRAVERSAL: RETURNED FROM NODE 26 WITH MINCOST, CURRCOST  241 329 (  26:   XX   XX   83 329)
+                TRAVERSAL: DESCEND FROM NODE  27 WITH MINCOST, CURRCOST  241 272 (  27:   XX   XX   26 272)
+                TRAVERSAL: enter DescendFrom(  27:   XX   XX   26 272)
+                TRAVERSAL: LEAF (  27:   XX   XX   26 272)
+                TRAVERSAL: RETURNED FROM NODE 27 WITH MINCOST, CURRCOST  241 272 (  27:   XX   XX   26 272)
+                TRAVERSAL: leave DescendFrom
+            TRAVERSAL: RETURNED FROM NODE 13 WITH MINCOST, CURRCOST  241 246 (  13:   26   27   49 246)
+            TRAVERSAL: leave DescendFrom
+        TRAVERSAL: RETURNED FROM NODE 6 WITH MINCOST, CURRCOST  241 197 (   6:   12   13   66 197)
+          TRAVERSAL: DESCEND FROM NODE  7 WITH MINCOST, CURRCOST  241 165 (   7:   14   15   34 165)
+          TRAVERSAL: enter DescendFrom(   7:   14   15   34 165)
+            TRAVERSAL: DESCEND FROM NODE  14 WITH MINCOST, CURRCOST  241 179 (  14:   28   29   14 179)
+            TRAVERSAL: enter DescendFrom(  14:   28   29   14 179)
+              TRAVERSAL: DESCEND FROM NODE  28 WITH MINCOST, CURRCOST  241 240 (  28:   XX   XX   61 240)
+              TRAVERSAL: enter DescendFrom(  28:   XX   XX   61 240)
+              TRAVERSAL: LEAF (  28:   XX   XX   61 240)
+              TRAVERSAL: SET NEW MIN COST 28 WITH MINCOST, CURRCOST  240 240 (  28:   XX   XX   61 240)
+              TRAVERSAL: RETURNED FROM NODE 28 WITH MINCOST, CURRCOST  240 240 (  28:   XX   XX   61 240)
+                TRAVERSAL: DESCEND FROM NODE  29 WITH MINCOST, CURRCOST  240 234 (  29:   XX   XX   55 234)
+                TRAVERSAL: enter DescendFrom(  29:   XX   XX   55 234)
+                TRAVERSAL: LEAF (  29:   XX   XX   55 234)
+                TRAVERSAL: SET NEW MIN COST 29 WITH MINCOST, CURRCOST  234 234 (  29:   XX   XX   55 234)
+                TRAVERSAL: RETURNED FROM NODE 29 WITH MINCOST, CURRCOST  234 234 (  29:   XX   XX   55 234)
+                TRAVERSAL: leave DescendFrom
+            TRAVERSAL: RETURNED FROM NODE 14 WITH MINCOST, CURRCOST  234 179 (  14:   28   29   14 179)
+              TRAVERSAL: DESCEND FROM NODE  15 WITH MINCOST, CURRCOST  234 243 (  15:   30   31   78 243)
+              TRAVERSAL: enter DescendFrom(  15:   30   31   78 243)
+                TRAVERSAL: DESCEND FROM NODE  30 WITH MINCOST, CURRCOST  234 329 (  30:   XX   XX   86 329)
+                TRAVERSAL: enter DescendFrom(  30:   XX   XX   86 329)
+                TRAVERSAL: LEAF (  30:   XX   XX   86 329)
+                TRAVERSAL: RETURNED FROM NODE 30 WITH MINCOST, CURRCOST  234 329 (  30:   XX   XX   86 329)
+                  TRAVERSAL: DESCEND FROM NODE  31 WITH MINCOST, CURRCOST  234 246 (  31:   XX   XX    3 246)
+                  TRAVERSAL: enter DescendFrom(  31:   XX   XX    3 246)
+                  TRAVERSAL: LEAF (  31:   XX   XX    3 246)
+                  TRAVERSAL: RETURNED FROM NODE 31 WITH MINCOST, CURRCOST  234 246 (  31:   XX   XX    3 246)
+                  TRAVERSAL: leave DescendFrom
+              TRAVERSAL: RETURNED FROM NODE 15 WITH MINCOST, CURRCOST  234 243 (  15:   30   31   78 243)
+              TRAVERSAL: leave DescendFrom
+          TRAVERSAL: RETURNED FROM NODE 7 WITH MINCOST, CURRCOST  234 165 (   7:   14   15   34 165)
+          TRAVERSAL: leave DescendFrom
+      TRAVERSAL: RETURNED FROM NODE 3 WITH MINCOST, CURRCOST  234 131 (   3:    6    7   34 131)
+      TRAVERSAL: leave DescendFrom
+TRAVERSAL: 
+RETURNED FROM NODE 1 WITH MINCOST, CURRCOST  234 97 (   1:    2    3   97  97)
+Ending execution
